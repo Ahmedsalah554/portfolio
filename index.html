@@ -389,86 +389,158 @@
             transform: translateY(-2px);
         }
 
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
+        <!-- استبدل قسم المشاريع الحالي بهذا الكود -->
 
-        .project-card {
-            background: rgba(30, 41, 59, 0.5);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: var(--transition);
-        }
+<section id="projects">
+    <div class="container">
+        <div class="section-header">
+            <h2><span class="lang-ar">أعمالي</span><span class="lang-en">My Work</span></h2>
+            <p>
+                <span class="lang-ar">مشاريعي وحلولي في هندسة البيانات</span>
+                <span class="lang-en">My data engineering projects and solutions</span>
+            </p>
+        </div>
+        <div class="projects-grid">
+            <!-- المشروع 1 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <span class="lang-ar">خط أنابيب بيانات المبيعات</span>
+                    <span class="lang-en">Sales Data Pipeline</span>
+                </div>
+                <div class="project-content">
+                    <h3><span class="lang-ar">خط أنابيب هندسة بيانات المبيعات</span><span class="lang-en">Data Engineering Sales Pipeline</span></h3>
+                    <p>
+                        <span class="lang-ar">خط أنابيب هندسة بيانات شامل لمعالجة وتحليل بيانات المبيعات. مبني باستخدام أحدث أدوات هندسة البيانات وأفضل الممارسات.</span>
+                        <span class="lang-en">End-to-end data engineering pipeline for processing and analyzing sales data. Built with modern data engineering tools and best practices.</span>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">ETL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Ahmedsalah554/data-engineering-sales-pipeline" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- المشروع 2 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <span class="lang-ar">تنظيم سير العمل</span>
+                    <span class="lang-en">Workflow Orchestration</span>
+                </div>
+                <div class="project-content">
+                    <h3><span class="lang-ar">مشروع Apache Airflow</span><span class="lang-en">Apache Airflow Project</span></h3>
+                    <p>
+                        <span class="lang-ar">تنظيم خط أنابيب البيانات باستخدام Apache Airflow لجدولة ومراقبة وإدارة مهام البيانات المعقدة مع التبعيات.</span>
+                        <span class="lang-en">Data pipeline orchestration using Apache Airflow for scheduling, monitoring, and managing complex data workflows with dependencies.</span>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Apache Airflow</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">DAGs</span>
+                        <span class="tech-tag"><span class="lang-ar">سير العمل</span><span class="lang-en">Workflow</span></span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Ahmedsalah554/AirflowProject" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- المشروع 3 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <span class="lang-ar">تحليل البيانات</span>
+                    <span class="lang-en">Data Analysis</span>
+                </div>
+                <div class="project-content">
+                    <h3><span class="lang-ar">تحليل وتصور البيانات</span><span class="lang-en">Data Analysis & Visualization</span></h3>
+                    <p>
+                        <span class="lang-ar">إجراء تحليل شامل للبيانات وإنشاء تصورات تفاعلية باستخدام مكتبات علوم البيانات في Python.</span>
+                        <span class="lang-en">Performed comprehensive data analysis and created interactive visualizations using Python data science libraries.</span>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Matplotlib</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Ahmedsalah554" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            background: rgba(30, 41, 59, 0.8);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
+            <!-- المشروع الجديد 4 - Snowflake dbt -->
+            <div class="project-card">
+                <div class="project-image">
+                    <span class="lang-ar">Snowflake مع dbt</span>
+                    <span class="lang-en">Snowflake with dbt</span>
+                </div>
+                <div class="project-content">
+                    <h3>
+                        <span class="lang-ar">مشروع Snowflake و dbt</span>
+                        <span class="lang-en">Snowflake dbt Project</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">بناء pipeline بيانات متكامل باستخدام Snowflake و dbt. تصميم وتحويل البيانات باستخدام best practices وبناء data models متقدمة.</span>
+                        <span class="lang-en">Building a complete data pipeline using Snowflake and dbt. Designing and transforming data using best practices and building advanced data models.</span>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Snowflake</span>
+                        <span class="tech-tag">dbt</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Data Modeling</span>
+                        <span class="tech-tag">ETL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Ahmedsalah554/snowflak_dbt_project" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-        .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .project-content p {
-            color: #cbd5e1;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tech-tag {
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .project-link {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: var(--transition);
-        }
-
-        .project-link:hover {
-            color: var(--primary);
-        }
-
+            <!-- المشروع الجديد 5 - Inventory Analytics -->
+            <div class="project-card">
+                <div class="project-image">
+                    <span class="lang-ar">نظام تحليل المخزون</span>
+                    <span class="lang-en">Inventory Analytics System</span>
+                </div>
+                <div class="project-content">
+                    <h3>
+                        <span class="lang-ar">نظام تحليل وإدارة المخزون</span>
+                        <span class="lang-en">Inventory Analytics System</span>
+                    </h3>
+                    <p>
+                        <span class="lang-ar">نظام متكامل لتحليل وإدارة المخزون مع تقارير متقدمة وتحليلات تنبؤية لتحسين عمليات التخزين.</span>
+                        <span class="lang-en">Comprehensive inventory analysis and management system with advanced reporting and predictive analytics for storage optimization.</span>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Data Analysis</span>
+                        <span class="tech-tag">Visualization</span>
+                        <span class="tech-tag">Analytics</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Ahmedsalah554/Inventory_Analytics_System" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
         /* Contact Section */
         .contact-container {
             display: grid;
@@ -1666,3 +1738,4 @@
     </script>
 </body>
 </html>
+
