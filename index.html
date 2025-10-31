@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,11 +27,6 @@
             color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
-        }
-
-        body.english {
-            direction: ltr;
-            text-align: left;
         }
 
         .container {
@@ -95,16 +90,11 @@
             content: '';
             position: absolute;
             bottom: -5px;
-            right: 0;
+            left: 0;
             width: 0;
             height: 2px;
             background: var(--primary);
             transition: var(--transition);
-        }
-
-        body.english .nav-links a::after {
-            left: 0;
-            right: auto;
         }
 
         .nav-links a:hover::after {
@@ -150,16 +140,11 @@
         .hero-bg {
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%);
             z-index: -1;
-        }
-
-        body.english .hero-bg {
-            left: 0;
-            right: auto;
         }
 
         .hero-content {
@@ -270,18 +255,12 @@
             content: '';
             position: absolute;
             bottom: -10px;
-            right: 50%;
-            transform: translateX(50%);
+            left: 50%;
+            transform: translateX(-50%);
             width: 80px;
             height: 4px;
             background: var(--primary);
             border-radius: 2px;
-        }
-
-        body.english .section-header h2::after {
-            left: 50%;
-            right: auto;
-            transform: translateX(-50%);
         }
 
         .section-header p {
@@ -389,158 +368,86 @@
             transform: translateY(-2px);
         }
 
-        <!-- استبدل قسم المشاريع الحالي بهذا الكود -->
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
 
-<section id="projects">
-    <div class="container">
-        <div class="section-header">
-            <h2><span class="lang-ar">أعمالي</span><span class="lang-en">My Work</span></h2>
-            <p>
-                <span class="lang-ar">مشاريعي وحلولي في هندسة البيانات</span>
-                <span class="lang-en">My data engineering projects and solutions</span>
-            </p>
-        </div>
-        <div class="projects-grid">
-            <!-- المشروع 1 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <span class="lang-ar">خط أنابيب بيانات المبيعات</span>
-                    <span class="lang-en">Sales Data Pipeline</span>
-                </div>
-                <div class="project-content">
-                    <h3><span class="lang-ar">خط أنابيب هندسة بيانات المبيعات</span><span class="lang-en">Data Engineering Sales Pipeline</span></h3>
-                    <p>
-                        <span class="lang-ar">خط أنابيب هندسة بيانات شامل لمعالجة وتحليل بيانات المبيعات. مبني باستخدام أحدث أدوات هندسة البيانات وأفضل الممارسات.</span>
-                        <span class="lang-en">End-to-end data engineering pipeline for processing and analyzing sales data. Built with modern data engineering tools and best practices.</span>
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">ETL</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Ahmedsalah554/data-engineering-sales-pipeline" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- المشروع 2 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <span class="lang-ar">تنظيم سير العمل</span>
-                    <span class="lang-en">Workflow Orchestration</span>
-                </div>
-                <div class="project-content">
-                    <h3><span class="lang-ar">مشروع Apache Airflow</span><span class="lang-en">Apache Airflow Project</span></h3>
-                    <p>
-                        <span class="lang-ar">تنظيم خط أنابيب البيانات باستخدام Apache Airflow لجدولة ومراقبة وإدارة مهام البيانات المعقدة مع التبعيات.</span>
-                        <span class="lang-en">Data pipeline orchestration using Apache Airflow for scheduling, monitoring, and managing complex data workflows with dependencies.</span>
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Apache Airflow</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">DAGs</span>
-                        <span class="tech-tag"><span class="lang-ar">سير العمل</span><span class="lang-en">Workflow</span></span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Ahmedsalah554/AirflowProject" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- المشروع 3 -->
-            <div class="project-card">
-                <div class="project-image">
-                    <span class="lang-ar">تحليل البيانات</span>
-                    <span class="lang-en">Data Analysis</span>
-                </div>
-                <div class="project-content">
-                    <h3><span class="lang-ar">تحليل وتصور البيانات</span><span class="lang-en">Data Analysis & Visualization</span></h3>
-                    <p>
-                        <span class="lang-ar">إجراء تحليل شامل للبيانات وإنشاء تصورات تفاعلية باستخدام مكتبات علوم البيانات في Python.</span>
-                        <span class="lang-en">Performed comprehensive data analysis and created interactive visualizations using Python data science libraries.</span>
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Matplotlib</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Ahmedsalah554" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        .project-card {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
 
-            <!-- المشروع الجديد 4 - Snowflake dbt -->
-            <div class="project-card">
-                <div class="project-image">
-                    <span class="lang-ar">Snowflake مع dbt</span>
-                    <span class="lang-en">Snowflake with dbt</span>
-                </div>
-                <div class="project-content">
-                    <h3>
-                        <span class="lang-ar">مشروع Snowflake و dbt</span>
-                        <span class="lang-en">Snowflake dbt Project</span>
-                    </h3>
-                    <p>
-                        <span class="lang-ar">بناء pipeline بيانات متكامل باستخدام Snowflake و dbt. تصميم وتحويل البيانات باستخدام best practices وبناء data models متقدمة.</span>
-                        <span class="lang-en">Building a complete data pipeline using Snowflake and dbt. Designing and transforming data using best practices and building advanced data models.</span>
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Snowflake</span>
-                        <span class="tech-tag">dbt</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">Data Modeling</span>
-                        <span class="tech-tag">ETL</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Ahmedsalah554/snowflak_dbt_project" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        .project-card:hover {
+            transform: translateY(-10px);
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
 
-            <!-- المشروع الجديد 5 - Inventory Analytics -->
-            <div class="project-card">
-                <div class="project-image">
-                    <span class="lang-ar">نظام تحليل المخزون</span>
-                    <span class="lang-en">Inventory Analytics System</span>
-                </div>
-                <div class="project-content">
-                    <h3>
-                        <span class="lang-ar">نظام تحليل وإدارة المخزون</span>
-                        <span class="lang-en">Inventory Analytics System</span>
-                    </h3>
-                    <p>
-                        <span class="lang-ar">نظام متكامل لتحليل وإدارة المخزون مع تقارير متقدمة وتحليلات تنبؤية لتحسين عمليات التخزين.</span>
-                        <span class="lang-en">Comprehensive inventory analysis and management system with advanced reporting and predictive analytics for storage optimization.</span>
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">Data Analysis</span>
-                        <span class="tech-tag">Visualization</span>
-                        <span class="tech-tag">Analytics</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Ahmedsalah554/Inventory_Analytics_System" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: #cbd5e1;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+        }
+
         /* Contact Section */
         .contact-container {
             display: grid;
@@ -714,7 +621,7 @@
         .toast {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             background: var(--primary);
             color: white;
             padding: 15px 25px;
@@ -726,11 +633,6 @@
             z-index: 10000;
         }
 
-        body.english .toast {
-            left: 20px;
-            right: auto;
-        }
-
         .toast.show {
             transform: translateY(0);
             opacity: 1;
@@ -740,7 +642,7 @@
         .mobile-nav {
             position: fixed;
             top: 0;
-            left: -100%;
+            right: -100%;
             width: 80%;
             max-width: 300px;
             height: 100vh;
@@ -748,22 +650,11 @@
             z-index: 1001;
             padding: 80px 30px 30px;
             transition: var(--transition);
-            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-        body.english .mobile-nav {
-            right: -100%;
-            left: auto;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         }
 
         .mobile-nav.active {
-            left: 0;
-        }
-
-        body.english .mobile-nav.active {
             right: 0;
-            left: auto;
         }
 
         .mobile-nav-links {
@@ -787,7 +678,7 @@
         .close-menu {
             position: absolute;
             top: 20px;
-            left: 20px;
+            right: 20px;
             background: none;
             border: none;
             color: var(--light);
@@ -795,15 +686,10 @@
             cursor: pointer;
         }
 
-        body.english .close-menu {
-            right: 20px;
-            left: auto;
-        }
-
         .overlay {
             position: fixed;
             top: 0;
-            right: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
@@ -822,7 +708,7 @@
         .scroll-to-top {
             position: fixed;
             bottom: 30px;
-            left: 30px;
+            right: 30px;
             width: 50px;
             height: 50px;
             background: var(--primary);
@@ -839,11 +725,6 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        body.english .scroll-to-top {
-            right: 30px;
-            left: auto;
-        }
-
         .scroll-to-top.visible {
             opacity: 1;
             visibility: visible;
@@ -858,7 +739,7 @@
         .loader {
             position: fixed;
             top: 0;
-            right: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background: var(--dark);
@@ -892,7 +773,7 @@
         .animated-bg {
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
@@ -910,14 +791,14 @@
         }
 
         .animated-bg span:nth-child(1) {
-            right: 25%;
+            left: 25%;
             width: 80px;
             height: 80px;
             animation-delay: 0s;
         }
 
         .animated-bg span:nth-child(2) {
-            right: 10%;
+            left: 10%;
             width: 20px;
             height: 20px;
             animation-delay: 2s;
@@ -925,14 +806,14 @@
         }
 
         .animated-bg span:nth-child(3) {
-            right: 70%;
+            left: 70%;
             width: 20px;
             height: 20px;
             animation-delay: 4s;
         }
 
         .animated-bg span:nth-child(4) {
-            right: 40%;
+            left: 40%;
             width: 60px;
             height: 60px;
             animation-delay: 0s;
@@ -940,28 +821,28 @@
         }
 
         .animated-bg span:nth-child(5) {
-            right: 65%;
+            left: 65%;
             width: 20px;
             height: 20px;
             animation-delay: 0s;
         }
 
         .animated-bg span:nth-child(6) {
-            right: 75%;
+            left: 75%;
             width: 110px;
             height: 110px;
             animation-delay: 3s;
         }
 
         .animated-bg span:nth-child(7) {
-            right: 35%;
+            left: 35%;
             width: 150px;
             height: 150px;
             animation-delay: 7s;
         }
 
         .animated-bg span:nth-child(8) {
-            right: 50%;
+            left: 50%;
             width: 25px;
             height: 25px;
             animation-delay: 15s;
@@ -969,7 +850,7 @@
         }
 
         .animated-bg span:nth-child(9) {
-            right: 20%;
+            left: 20%;
             width: 15px;
             height: 15px;
             animation-delay: 2s;
@@ -977,7 +858,7 @@
         }
 
         .animated-bg span:nth-child(10) {
-            right: 85%;
+            left: 85%;
             width: 150px;
             height: 150px;
             animation-delay: 0s;
@@ -995,23 +876,6 @@
                 opacity: 0;
                 border-radius: 50%;
             }
-        }
-
-        /* Language specific text */
-        .lang-ar {
-            display: block;
-        }
-
-        .lang-en {
-            display: none;
-        }
-
-        body.english .lang-ar {
-            display: none;
-        }
-
-        body.english .lang-en {
-            display: block;
         }
 
         /* Responsive */
@@ -1053,13 +917,8 @@
             }
 
             .scroll-to-top {
-                left: 20px;
-                bottom: 20px;
-            }
-
-            body.english .scroll-to-top {
                 right: 20px;
-                left: auto;
+                bottom: 20px;
             }
         }
     </style>
@@ -1074,16 +933,15 @@
     <header id="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo"><span class="lang-ar">أحمد <span>صلاح.</span></span><span class="lang-en">AHMED <span>SALAH.</span></span></div>
+                <div class="logo">AHMED <span>SALAH.</span></div>
                 <nav class="nav-links">
-                    <a href="#home"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
-                    <a href="#about"><span class="lang-ar">عني</span><span class="lang-en">About</span></a>
-                    <a href="#skills"><span class="lang-ar">المهارات</span><span class="lang-en">Skills</span></a>
-                    <a href="#projects"><span class="lang-ar">أعمالي</span><span class="lang-en">Projects</span></a>
-                    <a href="#contact"><span class="lang-ar">اتصل بي</span><span class="lang-en">Contact</span></a>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
                     <button class="language-switcher" id="languageSwitcher">
-                        <span class="lang-ar">English</span>
-                        <span class="lang-en">العربية</span>
+                        العربية
                     </button>
                 </nav>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1099,14 +957,13 @@
             <i class="fas fa-times"></i>
         </button>
         <nav class="mobile-nav-links">
-            <a href="#home" class="mobile-nav-link"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
-            <a href="#about" class="mobile-nav-link"><span class="lang-ar">عني</span><span class="lang-en">About</span></a>
-            <a href="#skills" class="mobile-nav-link"><span class="lang-ar">المهارات</span><span class="lang-en">Skills</span></a>
-            <a href="#projects" class="mobile-nav-link"><span class="lang-ar">أعمالي</span><span class="lang-en">Projects</span></a>
-            <a href="#contact" class="mobile-nav-link"><span class="lang-ar">اتصل بي</span><span class="lang-en">Contact</span></a>
-            <button class="language-switcher" id="mobileLanguageSwitcher" style="margin-top: 20px; text-align: right;">
-                <span class="lang-ar">English</span>
-                <span class="lang-en">العربية</span>
+            <a href="#home" class="mobile-nav-link">Home</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#skills" class="mobile-nav-link">Skills</a>
+            <a href="#projects" class="mobile-nav-link">Projects</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+            <button class="language-switcher" id="mobileLanguageSwitcher" style="margin-top: 20px; text-align: left;">
+                العربية
             </button>
         </nav>
     </div>
@@ -1130,26 +987,15 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>
-                        <span class="lang-ar">مرحباً! أنا <span>أحمد صلاح</span></span>
-                        <span class="lang-en">Hi! I'm <span>Ahmed Salah</span></span>
-                    </h1>
-                    <h1>
-                        <span class="lang-ar">مهندس بيانات</span>
-                        <span class="lang-en">Data Engineer</span>
-                    </h1>
-                    <p>
-                        <span class="lang-ar">أبني أنابيب ETL قابلة للتطوير، مستودعات بيانات، وحلول تحليلات آنية. أحول البيانات الخام إلى رؤى قابلة للتنفيذ باستخدام أحدث تقنيات البيانات.</span>
-                        <span class="lang-en">Building scalable ETL pipelines, data warehouses, and real-time analytics solutions. Transforming raw data into actionable insights with modern data technologies.</span>
-                    </p>
+                    <h1>Hi! I'm <span>Ahmed Salah</span></h1>
+                    <h1>Data Engineer</h1>
+                    <p>Building scalable ETL pipelines, data warehouses, and real-time analytics solutions. Transforming raw data into actionable insights with modern data technologies.</p>
                     <div class="hero-actions">
                         <a href="#contact" class="btn btn-primary">
-                            <span class="lang-ar">اتصل بي ←</span>
-                            <span class="lang-en">Contact me →</span>
+                            Contact me →
                         </a>
                         <button class="btn btn-outline" id="downloadCV">
-                            <span class="lang-ar">سيرتي الذاتية ↓</span>
-                            <span class="lang-en">My resume ↓</span>
+                            My resume ↓
                         </button>
                     </div>
                 </div>
@@ -1164,35 +1010,26 @@
     <section id="about">
         <div class="container">
             <div class="section-header">
-                <h2><span class="lang-ar">عني</span><span class="lang-en">About Me</span></h2>
-                <p>
-                    <span class="lang-ar">تعرف أكثر على خلفيتي وشغفي بهندسة البيانات</span>
-                    <span class="lang-en">Learn more about my background and passion for data engineering</span>
-                </p>
+                <h2>About Me</h2>
+                <p>Learn more about my background and passion for data engineering</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>
-                        <span class="lang-ar">أنا مهندس بيانات شغوف بخبرة في بناء أنابيب بيانات قوية، وتحسين عمليات ETL، وتصميم حلول بيانات قابلة للتطوير. مع خبرة عملية في تقنيات البيانات الحديثة ومنصات السحابة، أركز على إنشاء حلول فعالة تخلق قيمة للأعمال.</span>
-                        <span class="lang-en">I'm a passionate data engineer with expertise in building robust data pipelines, optimizing ETL processes, and architecting scalable data solutions. With hands-on experience in modern data technologies and cloud platforms, I focus on creating efficient solutions that drive business value.</span>
-                    </p>
-                    <p>
-                        <span class="lang-ar">يجمع أسلوبي بين المهارات التقنية القوية وعقلية حل المشكلات، مما يضمن أن تكون حلول البيانات ليس فقط وظيفية ولكن أيضًا متوافقة مع الأهداف التجارية واتخاذ القرارات القائمة على البيانات.</span>
-                        <span class="lang-en">My approach combines strong technical skills with a problem-solving mindset, ensuring data solutions are not only functional but also aligned with business objectives and data-driven decision making.</span>
-                    </p>
+                    <p>I'm a passionate data engineer with expertise in building robust data pipelines, optimizing ETL processes, and architecting scalable data solutions. With hands-on experience in modern data technologies and cloud platforms, I focus on creating efficient solutions that drive business value.</p>
+                    <p>My approach combines strong technical skills with a problem-solving mindset, ensuring data solutions are not only functional but also aligned with business objectives and data-driven decision making.</p>
                     
                     <div class="about-stats">
                         <div class="stat">
                             <div class="stat-value">10+</div>
-                            <div class="stat-label"><span class="lang-ar">مشروع مكتمل</span><span class="lang-en">Projects Completed</span></div>
+                            <div class="stat-label">Projects Completed</div>
                         </div>
                         <div class="stat">
                             <div class="stat-value">13+</div>
-                            <div class="stat-label"><span class="lang-ar">تقنية</span><span class="lang-en">Technologies</span></div>
+                            <div class="stat-label">Technologies</div>
                         </div>
                         <div class="stat">
                             <div class="stat-value">100%</div>
-                            <div class="stat-label"><span class="lang-ar">ملتزم</span><span class="lang-en">Dedicated</span></div>
+                            <div class="stat-label">Dedicated</div>
                         </div>
                     </div>
                 </div>
@@ -1200,8 +1037,8 @@
                     <div class="profile-img-placeholder" style="width: 100%; height: 400px; background: rgba(30, 41, 59, 0.5); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #64748b; flex-direction: column;">
                         <i class="fas fa-database" style="font-size: 3rem; margin-bottom: 15px; color: var(--primary);"></i>
                         <div style="text-align: center;">
-                            <h3><span class="lang-ar">مشاريع هندسة البيانات</span><span class="lang-en">Data Engineering Projects</span></h3>
-                            <p><span class="lang-ar">بناء حلول بيانات قابلة للتطوير</span><span class="lang-en">Building scalable data solutions</span></p>
+                            <h3>Data Engineering Projects</h3>
+                            <p>Building scalable data solutions</p>
                         </div>
                     </div>
                 </div>
@@ -1213,15 +1050,12 @@
     <section id="skills">
         <div class="container">
             <div class="section-header">
-                <h2><span class="lang-ar">المهارات</span><span class="lang-en">Skills</span></h2>
-                <p>
-                    <span class="lang-ar">خبراتي التقنية عبر مجموعة هندسة البيانات</span>
-                    <span class="lang-en">My technical expertise across the data engineering stack</span>
-                </p>
+                <h2>Skills</h2>
+                <p>My technical expertise across the data engineering stack</p>
             </div>
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> <span class="lang-ar">معالجة البيانات</span><span class="lang-en">Data Processing</span></h3>
+                    <h3><i class="fas fa-database"></i> Data Processing</h3>
                     <div class="skill-list">
                         <span class="skill-tag">Apache Spark</span>
                         <span class="skill-tag">PySpark</span>
@@ -1233,7 +1067,7 @@
                 </div>
                 
                 <div class="skill-category">
-                    <h3><i class="fas fa-cloud"></i> <span class="lang-ar">خدمات البيانات السحابية</span><span class="lang-en">Cloud Data Services</span></h3>
+                    <h3><i class="fas fa-cloud"></i> Cloud Data Services</h3>
                     <div class="skill-list">
                         <span class="skill-tag">AWS Redshift</span>
                         <span class="skill-tag">Azure Synapse</span>
@@ -1244,7 +1078,7 @@
                 </div>
                 
                 <div class="skill-category">
-                    <h3><i class="fas fa-cogs"></i> <span class="lang-ar">أدوات هندسة البيانات</span><span class="lang-en">Data Engineering Tools</span></h3>
+                    <h3><i class="fas fa-cogs"></i> Data Engineering Tools</h3>
                     <div class="skill-list">
                         <span class="skill-tag">Apache Airflow</span>
                         <span class="skill-tag">dbt</span>
@@ -1261,24 +1095,18 @@
     <section id="projects">
         <div class="container">
             <div class="section-header">
-                <h2><span class="lang-ar">أعمالي</span><span class="lang-en">My Work</span></h2>
-                <p>
-                    <span class="lang-ar">مشاريعي وحلولي في هندسة البيانات</span>
-                    <span class="lang-en">My data engineering projects and solutions</span>
-                </p>
+                <h2>My Work</h2>
+                <p>My data engineering projects and solutions</p>
             </div>
             <div class="projects-grid">
+                <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <span class="lang-ar">خط أنابيب بيانات المبيعات</span>
-                        <span class="lang-en">Sales Data Pipeline</span>
+                        Sales Data Pipeline
                     </div>
                     <div class="project-content">
-                        <h3><span class="lang-ar">خط أنابيب هندسة بيانات المبيعات</span><span class="lang-en">Data Engineering Sales Pipeline</span></h3>
-                        <p>
-                            <span class="lang-ar">خط أنابيب هندسة بيانات شامل لمعالجة وتحليل بيانات المبيعات. مبني باستخدام أحدث أدوات هندسة البيانات وأفضل الممارسات.</span>
-                            <span class="lang-en">End-to-end data engineering pipeline for processing and analyzing sales data. Built with modern data engineering tools and best practices.</span>
-                        </p>
+                        <h3>Data Engineering Sales Pipeline</h3>
+                        <p>End-to-end data engineering pipeline for processing and analyzing sales data. Built with modern data engineering tools and best practices.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Pandas</span>
@@ -1287,48 +1115,42 @@
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/Ahmedsalah554/data-engineering-sales-pipeline" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
+                                <i class="fab fa-github"></i> Code
                             </a>
                         </div>
                     </div>
                 </div>
                 
+                <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <span class="lang-ar">تنظيم سير العمل</span>
-                        <span class="lang-en">Workflow Orchestration</span>
+                        Workflow Orchestration
                     </div>
                     <div class="project-content">
-                        <h3><span class="lang-ar">مشروع Apache Airflow</span><span class="lang-en">Apache Airflow Project</span></h3>
-                        <p>
-                            <span class="lang-ar">تنظيم خط أنابيب البيانات باستخدام Apache Airflow لجدولة ومراقبة وإدارة مهام البيانات المعقدة مع التبعيات.</span>
-                            <span class="lang-en">Data pipeline orchestration using Apache Airflow for scheduling, monitoring, and managing complex data workflows with dependencies.</span>
-                        </p>
+                        <h3>Apache Airflow Project</h3>
+                        <p>Data pipeline orchestration using Apache Airflow for scheduling, monitoring, and managing complex data workflows with dependencies.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Apache Airflow</span>
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">DAGs</span>
-                            <span class="tech-tag"><span class="lang-ar">سير العمل</span><span class="lang-en">Workflow</span></span>
+                            <span class="tech-tag">Workflow</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/Ahmedsalah554/AirflowProject" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
+                                <i class="fab fa-github"></i> Code
                             </a>
                         </div>
                     </div>
                 </div>
                 
+                <!-- Project 3 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <span class="lang-ar">تحليل البيانات</span>
-                        <span class="lang-en">Data Analysis</span>
+                        Data Analysis
                     </div>
                     <div class="project-content">
-                        <h3><span class="lang-ar">تحليل وتصور البيانات</span><span class="lang-en">Data Analysis & Visualization</span></h3>
-                        <p>
-                            <span class="lang-ar">إجراء تحليل شامل للبيانات وإنشاء تصورات تفاعلية باستخدام مكتبات علوم البيانات في Python.</span>
-                            <span class="lang-en">Performed comprehensive data analysis and created interactive visualizations using Python data science libraries.</span>
-                        </p>
+                        <h3>Data Analysis & Visualization</h3>
+                        <p>Performed comprehensive data analysis and created interactive visualizations using Python data science libraries.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Pandas</span>
@@ -1337,7 +1159,53 @@
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/Ahmedsalah554" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> <span class="lang-ar">الكود</span><span class="lang-en">Code</span>
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Project 4 - Snowflake dbt -->
+                <div class="project-card">
+                    <div class="project-image">
+                        Snowflake with dbt
+                    </div>
+                    <div class="project-content">
+                        <h3>Snowflake dbt Project</h3>
+                        <p>Building a complete data pipeline using Snowflake and dbt. Designing and transforming data using best practices and building advanced data models.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Snowflake</span>
+                            <span class="tech-tag">dbt</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Data Modeling</span>
+                            <span class="tech-tag">ETL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Ahmedsalah554/snowflak_dbt_project" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Project 5 - Inventory Analytics -->
+                <div class="project-card">
+                    <div class="project-image">
+                        Inventory Analytics System
+                    </div>
+                    <div class="project-content">
+                        <h3>Inventory Analytics System</h3>
+                        <p>Comprehensive inventory analysis and management system with advanced reporting and predictive analytics for storage optimization.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Data Analysis</span>
+                            <span class="tech-tag">Visualization</span>
+                            <span class="tech-tag">Analytics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Ahmedsalah554/Inventory_Analytics_System" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> Code
                             </a>
                         </div>
                     </div>
@@ -1350,19 +1218,13 @@
     <section id="contact">
         <div class="container">
             <div class="section-header">
-                <h2><span class="lang-ar">اتصل بي</span><span class="lang-en">Contact Me</span></h2>
-                <p>
-                    <span class="lang-ar">تواصل معي لمناقشة فرص هندسة البيانات</span>
-                    <span class="lang-en">Get in touch to discuss data engineering opportunities</span>
-                </p>
+                <h2>Contact Me</h2>
+                <p>Get in touch to discuss data engineering opportunities</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3><span class="lang-ar">لنتواصل</span><span class="lang-en">Let's Connect</span></h3>
-                    <p>
-                        <span class="lang-ar">أنا دائمًا منفتح لمناقشة مشاريع هندسة البيانات والفرص والتعاون.</span>
-                        <span class="lang-en">I'm always open to discussing data engineering projects, opportunities, and collaborations.</span>
-                    </p>
+                    <h3>Let's Connect</h3>
+                    <p>I'm always open to discussing data engineering projects, opportunities, and collaborations.</p>
                     
                     <div class="contact-methods">
                         <div class="contact-method">
@@ -1370,7 +1232,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="contact-details">
-                                <h4><span class="lang-ar">البريد الإلكتروني</span><span class="lang-en">Email</span></h4>
+                                <h4>Email</h4>
                                 <p>salahabdelniem@gmail.com</p>
                             </div>
                         </div>
@@ -1400,22 +1262,22 @@
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name"><span class="lang-ar">الاسم</span><span class="lang-en">Name</span></label>
+                            <label for="name">Name</label>
                             <input type="text" id="name" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email"><span class="lang-ar">البريد الإلكتروني</span><span class="lang-en">Email</span></label>
+                            <label for="email">Email</label>
                             <input type="email" id="email" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message"><span class="lang-ar">الرسالة</span><span class="lang-en">Message</span></label>
+                            <label for="message">Message</label>
                             <textarea id="message" class="form-control" required></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <span class="lang-ar">إرسال الرسالة</span><span class="lang-en">Send Message</span>
+                            Send Message
                         </button>
                     </form>
                 </div>
@@ -1428,11 +1290,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="logo"><span class="lang-ar">أحمد <span>صلاح.</span></span><span class="lang-en">AHMED <span>SALAH.</span></span></div>
-                    <p>
-                        <span class="lang-ar">مهندس بيانات متخصص في بناء أنابيب بيانات قابلة للتطوير وتحويل البيانات الخام إلى رؤى قابلة للتنفيذ.</span>
-                        <span class="lang-en">Data Engineer specializing in building scalable data pipelines and transforming raw data into actionable insights.</span>
-                    </p>
+                    <div class="logo">AHMED <span>SALAH.</span></div>
+                    <p>Data Engineer specializing in building scalable data pipelines and transforming raw data into actionable insights.</p>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/ahmed-salah-74941b184/" target="_blank" class="social-link">
                             <i class="fab fa-linkedin"></i>
@@ -1450,18 +1309,18 @@
                 </div>
                 
                 <div class="footer-links">
-                    <h4><span class="lang-ar">روابط سريعة</span><span class="lang-en">Quick Links</span></h4>
+                    <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#home"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a></li>
-                        <li><a href="#about"><span class="lang-ar">عني</span><span class="lang-en">About</span></a></li>
-                        <li><a href="#skills"><span class="lang-ar">المهارات</span><span class="lang-en">Skills</span></a></li>
-                        <li><a href="#projects"><span class="lang-ar">المشاريع</span><span class="lang-en">Projects</span></a></li>
-                        <li><a href="#contact"><span class="lang-ar">اتصل بي</span><span class="lang-en">Contact</span></a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
-                    <h4><span class="lang-ar">التقنيات</span><span class="lang-en">Technologies</span></h4>
+                    <h4>Technologies</h4>
                     <ul>
                         <li><a href="#">Apache Spark</a></li>
                         <li><a href="#">AWS Redshift</a></li>
@@ -1473,7 +1332,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 <span class="lang-ar">أحمد صلاح. جميع الحقوق محفوظة.</span><span class="lang-en">Ahmed Salah. All rights reserved.</span></p>
+                <p>&copy; 2023 Ahmed Salah. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1487,56 +1346,6 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        // Language switching functionality
-        function switchLanguage() {
-            document.body.classList.toggle('english');
-            
-            // Update button text
-            const langSwitchers = document.querySelectorAll('.language-switcher');
-            langSwitchers.forEach(switcher => {
-                const arabicText = switcher.querySelector('.lang-ar');
-                const englishText = switcher.querySelector('.lang-en');
-                
-                if (document.body.classList.contains('english')) {
-                    arabicText.style.display = 'none';
-                    englishText.style.display = 'inline';
-                } else {
-                    arabicText.style.display = 'inline';
-                    englishText.style.display = 'none';
-                }
-            });
-            
-            // Update mobile menu language
-            const mobileMenu = document.getElementById('mobileNav');
-            if (document.body.classList.contains('english')) {
-                mobileMenu.style.textAlign = 'left';
-            } else {
-                mobileMenu.style.textAlign = 'right';
-            }
-            
-            // Show toast notification
-            const toast = document.getElementById('toast');
-            if (document.body.classList.contains('english')) {
-                toast.textContent = 'Language switched to English';
-            } else {
-                toast.textContent = 'تم تغيير اللغة إلى العربية';
-            }
-            toast.className = 'toast show';
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        // Add event listeners to language switchers
-        document.getElementById('languageSwitcher').addEventListener('click', switchLanguage);
-        document.getElementById('mobileLanguageSwitcher').addEventListener('click', function() {
-            switchLanguage();
-            // Close mobile menu after language switch
-            mobileNav.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
         // Loading animation
         window.addEventListener('load', function() {
             const loader = document.getElementById('loader');
@@ -1629,20 +1438,12 @@
             // Create a temporary link to trigger download
             const link = document.createElement('a');
             link.href = '#'; // Replace with actual CV file URL
-            if (document.body.classList.contains('english')) {
-                link.download = 'Ahmed_Salah_CV.pdf';
-            } else {
-                link.download = 'سيرة_أحمد_صلاح_الذاتية.pdf';
-            }
+            link.download = 'Ahmed_Salah_CV.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
             
-            if (document.body.classList.contains('english')) {
-                showToast('CV download started!');
-            } else {
-                showToast('بدأ تحميل السيرة الذاتية!');
-            }
+            showToast('CV download started!');
         });
 
         // Form submission
@@ -1656,11 +1457,7 @@
             
             // Here you would normally send the data to a server
             // For now, we'll just show a success message
-            if (document.body.classList.contains('english')) {
-                showToast(`Thank you ${name}! Your message has been sent. I will get back to you soon.`);
-            } else {
-                showToast(`شكراً ${name}! تم إرسال رسالتك. سأتواصل معك قريباً.`);
-            }
+            showToast(`Thank you ${name}! Your message has been sent. I will get back to you soon.`);
             
             // Reset form
             this.reset();
@@ -1706,36 +1503,6 @@
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(el);
         });
-
-        // Typing effect for hero section
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            
-            type();
-        }
-
-        // Initialize typing effect after page load
-        window.addEventListener('load', function() {
-            const heroTitle = document.querySelector('.hero-text h1:last-child');
-            const originalText = heroTitle.textContent;
-            
-            // Only apply typing effect if not on mobile
-            if (window.innerWidth > 768) {
-                setTimeout(() => {
-                    typeWriter(heroTitle, originalText, 80);
-                }, 1500);
-            }
-        });
     </script>
 </body>
 </html>
-
