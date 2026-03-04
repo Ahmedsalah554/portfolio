@@ -113,60 +113,171 @@
         .sec-sub { color: var(--muted); font-size:1.05rem; max-width:560px; }
         .sec-head { margin-bottom:64px; }
 
-        /* HERO - updated for Analytics Engineer */
-        #home { min-height:100vh; display:flex; align-items:center; padding:140px 0 80px; }
-        .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+        /* HERO - Fixed image positioning */
+        #home { 
+            min-height:100vh; 
+            display:flex; 
+            align-items:center; 
+            padding:120px 0 80px; 
+        }
+        
+        .hero-grid { 
+            display:grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px; 
+            align-items: center; /* This makes both columns vertically centered */
+        }
+        
+        /* Left column content */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
         .hero-badge {
-            display:inline-flex; align-items:center; gap:8px; font-family: var(--mono); font-size:0.72rem;
-            color: var(--cyan); letter-spacing:2px; background: rgba(0,230,255,0.07);
-            border:1px solid rgba(0,230,255,0.2); padding:8px 18px; border-radius:2px; margin-bottom:28px;
-            text-transform:uppercase;
+            display:inline-flex; 
+            align-items:center; 
+            gap:8px; 
+            font-family: var(--mono); 
+            font-size:0.75rem;
+            color: var(--cyan); 
+            letter-spacing:2px; 
+            background: rgba(0,230,255,0.07);
+            border:1px solid rgba(0,230,255,0.2); 
+            padding:8px 18px; 
+            border-radius:40px; 
+            margin-bottom:28px;
+            width: fit-content;
         }
         .hero-badge::before {
-            content:''; width:6px; height:6px; border-radius:50%; background: var(--cyan);
+            content:''; 
+            width:6px; 
+            height:6px; 
+            border-radius:50%; 
+            background: var(--cyan);
             animation: pulse 2s infinite;
         }
         @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.7); } }
-        .hero-h1 { font-size:clamp(2.8rem,5.5vw,4.5rem); font-weight:800; line-height:1.05; margin-bottom:24px; }
+        
+        .hero-h1 { 
+            font-size:clamp(2.5rem, 4.5vw, 4rem); 
+            font-weight:800; 
+            line-height:1.1; 
+            margin-bottom:24px; 
+        }
         .hero-h1 .cyan { color: var(--cyan); }
-        .hero-h1 .outline { -webkit-text-stroke:1.5px var(--cyan); color:transparent; }
-        .hero-desc { color: var(--muted); font-size:1.1rem; margin-bottom:40px; max-width:560px; line-height:1.75; }
-        .hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
+        .hero-h1 .outline { 
+            -webkit-text-stroke:1.5px var(--cyan); 
+            color:transparent; 
+        }
+        
+        .hero-desc { 
+            color: var(--muted); 
+            font-size:1rem; 
+            margin-bottom:32px; 
+            max-width:500px; 
+            line-height:1.7; 
+        }
+        
+        .hero-btns { 
+            display:flex; 
+            gap:16px; 
+            flex-wrap:wrap; 
+            margin-bottom:32px;
+        }
+        
         .btn {
-            font-family: var(--sans); font-weight:600; padding:13px 30px; border-radius:3px;
-            display:inline-flex; align-items:center; gap:8px; text-decoration:none; cursor:pointer;
-            font-size:0.92rem; letter-spacing:0.3px; transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            font-family: var(--sans); 
+            font-weight:600; 
+            padding:12px 28px; 
+            border-radius:40px;
+            display:inline-flex; 
+            align-items:center; 
+            gap:8px; 
+            text-decoration:none; 
+            cursor:pointer;
+            font-size:0.9rem; 
+            letter-spacing:0.3px; 
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
             border:none;
         }
-        .btn-cyan { background: var(--cyan); color: var(--bg); }
-        .btn-cyan:hover { transform:translateY(-3px); box-shadow: 0 12px 35px rgba(0,230,255,0.35); }
-        .btn-ghost { background:transparent; color: var(--white); border:1px solid rgba(255,255,255,0.18); }
-        .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); transform:translateY(-3px); }
+        .btn-cyan { 
+            background: var(--cyan); 
+            color: var(--bg); 
+        }
+        .btn-cyan:hover { 
+            transform:translateY(-3px); 
+            box-shadow: 0 12px 35px rgba(0,230,255,0.35); 
+        }
+        .btn-ghost { 
+            background:transparent; 
+            color: var(--white); 
+            border:1px solid rgba(255,255,255,0.18); 
+        }
+        .btn-ghost:hover { 
+            border-color: var(--cyan); 
+            color: var(--cyan); 
+            transform:translateY(-3px); 
+        }
 
-        /* Hero image - same */
-        .hero-img-wrap { position:relative; display:flex; justify-content:center; }
-        .hero-img-frame { position:relative; width:340px; height:340px; }
+        /* Right column - Image properly centered */
+        .hero-img-wrap { 
+            position:relative; 
+            display:flex; 
+            justify-content:center; 
+            align-items: center;
+            height: 100%;
+        }
+        
+        .hero-img-frame { 
+            position:relative; 
+            width: 380px; 
+            height: 380px; 
+        }
+        
         .hero-img-frame::before {
-            content:''; position:absolute; inset:-12px; border:1px solid rgba(0,230,255,0.3);
-            border-radius:50%; animation: rotateBorder 12s linear infinite;
+            content:''; 
+            position:absolute; 
+            inset:-12px; 
+            border:1px solid rgba(0,230,255,0.3);
+            border-radius:50%; 
+            animation: rotateBorder 12s linear infinite;
         }
+        
         .hero-img-frame::after {
-            content:''; position:absolute; inset:-24px; border:1px dashed rgba(0,230,255,0.12);
-            border-radius:50%; animation: rotateBorder 20s linear infinite reverse;
+            content:''; 
+            position:absolute; 
+            inset:-24px; 
+            border:1px dashed rgba(0,230,255,0.12);
+            border-radius:50%; 
+            animation: rotateBorder 20s linear infinite reverse;
         }
-        @keyframes rotateBorder { to { transform:rotate(360deg); } }
+        
+        @keyframes rotateBorder { 
+            to { transform:rotate(360deg); } 
+        }
+        
         .hero-img-frame img {
-            width:340px; height:340px; border-radius:50%; object-fit:cover;
-            border:3px solid rgba(0,230,255,0.5); box-shadow: 0 0 60px rgba(0,230,255,0.15), 0 20px 50px rgba(0,0,0,0.5);
-            position:relative; z-index:1; transition: transform 0.4s;
+            width: 380px; 
+            height: 380px; 
+            border-radius:50%; 
+            object-fit:cover;
+            border:3px solid rgba(0,230,255,0.5); 
+            box-shadow: 0 0 60px rgba(0,230,255,0.25), 0 20px 50px rgba(0,0,0,0.5);
+            position:relative; 
+            z-index:1; 
+            transition: transform 0.4s;
         }
-        .hero-img-frame img:hover { transform:scale(1.04); }
+        
+        .hero-img-frame img:hover { 
+            transform:scale(1.02); 
+        }
 
-        /* HERO STATS - Updated to match the image and 3+ years experience */
+        /* Hero stats */
         .hero-stats {
             display: flex;
-            gap: 48px;
-            margin-top: 44px;
+            gap: 40px;
             flex-wrap: wrap;
         }
         .hero-stat {
@@ -175,22 +286,22 @@
             text-align: left;
         }
         .hero-stat strong {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--cyan);
             line-height: 1.1;
             font-family: var(--mono);
         }
         .hero-stat span {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--muted);
-            margin-top: 6px;
+            margin-top: 4px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             font-weight: 300;
         }
 
-        /* ABOUT - refined */
+        /* ABOUT */
         #about { background: rgba(10,22,40,0.4); }
         .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
         .about-text p { color: var(--muted); margin-bottom:18px; font-size:1.02rem; line-height:1.8; }
@@ -216,7 +327,7 @@
         .pip-fill { height:100%; border-radius:2px; background:linear-gradient(90deg, var(--cyan), var(--cyan2)); transform-origin:left; animation: barFill 1.5s ease forwards; }
         @keyframes barFill { from { transform:scaleX(0); } to { transform:scaleX(1); } }
 
-        /* SKILLS - updated to highlight modern data stack */
+        /* SKILLS */
         .skills-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(290px,1fr)); gap:24px; }
         .skill-card {
             background: var(--surface); border:1px solid var(--border); border-radius:4px; padding:28px;
@@ -243,7 +354,7 @@
         }
         .tag:hover { background:rgba(0,230,255,0.12); transform:translateY(-2px); }
 
-        /* MODERN STACK SECTION - new */
+        /* Modern Stack Flow */
         .stack-flow {
             display: flex;
             flex-wrap: wrap;
@@ -266,11 +377,11 @@
         .stack-item i { font-size: 1.8rem; color: var(--cyan); margin-bottom: 4px; }
         .stack-item strong { color: white; font-weight: 600; }
 
-        /* PROJECTS - revamped: airline project on spotlight */
+        /* PROJECTS */
         #projects { background: rgba(10,22,40,0.4); }
         .proj-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(340px,1fr)); gap:28px; }
 
-        /* featured project (airline) - larger */
+        /* featured project */
         .proj-card.featured {
             grid-column: 1 / -1;
             background: linear-gradient(145deg, #0c1a2f 0%, #0a1628 100%);
@@ -324,7 +435,7 @@
         }
         .proj-cta-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
         .btn-proj-demo {
-            font-family: var(--sans); font-size:0.8rem; font-weight:700; padding:9px 20px; border-radius:2px;
+            font-family: var(--sans); font-size:0.8rem; font-weight:700; padding:9px 20px; border-radius:40px;
             display:inline-flex; align-items:center; gap:7px; text-decoration:none; cursor:pointer; border:none;
             letter-spacing:0.3px; transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -333,7 +444,6 @@
         .btn-proj-demo.secondary { background:transparent; color: var(--white); border:1px solid rgba(255,255,255,0.15); }
         .btn-proj-demo.secondary:hover { border-color:rgba(0,230,255,0.4); color: var(--cyan); transform:translateY(-2px); }
 
-        /* standard project card */
         .proj-card {
             background: var(--surface); border:1px solid var(--border); border-radius:4px; overflow:hidden;
             transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
@@ -353,23 +463,7 @@
         .proj-body h3 { font-size:1.1rem; font-weight:700; margin-bottom:10px; }
         .proj-body p { color: var(--muted); font-size:0.9rem; line-height:1.7; margin-bottom:18px; }
 
-        /* data dictionary */
-        .data-dict { margin-top:4px; }
-        .data-dict-head {
-            font-family: var(--mono); font-size:0.68rem; letter-spacing:3px; text-transform:uppercase;
-            color: var(--cyan); margin-bottom:12px; display:flex; align-items:center; gap:8px;
-        }
-        .data-dict-head::after { content:''; flex:1; height:1px; background:rgba(0,230,255,0.15); }
-        .dict-table { width:100%; border-collapse:collapse; font-family: var(--mono); font-size:0.75rem; }
-        .dict-table thead tr { background:rgba(0,230,255,0.06); border-bottom:1px solid rgba(0,230,255,0.2); }
-        .dict-table th { padding:9px 12px; text-align:left; color: var(--cyan); font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size:0.65rem; }
-        .dict-table td { padding:9px 12px; color: var(--muted); border-bottom:1px solid rgba(255,255,255,0.04); vertical-align:top; }
-        .dict-table tbody tr:hover td { background:rgba(0,230,255,0.03); color: var(--white); }
-        .dict-table td:first-child { color: var(--white); font-weight:600; }
-        .dict-type { display:inline-block; padding:2px 7px; border-radius:2px; background:rgba(0,255,204,0.07); border:1px solid rgba(0,255,204,0.15); color:#00ffcc; font-size:0.65rem; white-space:nowrap; }
-        .dict-layer { display:inline-block; padding:2px 7px; border-radius:2px; background:rgba(0,230,255,0.07); border:1px solid rgba(0,230,255,0.15); color: var(--cyan); font-size:0.65rem; }
-
-        /* CONTACT, FOOTER same as before */
+        /* CONTACT */
         .contact-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:64px; align-items:start; }
         .contact-methods { display:flex; flex-direction:column; gap:18px; margin-top:32px; }
         .c-method {
@@ -407,8 +501,8 @@
             outline:none; border-color:rgba(0,230,255,0.4); box-shadow:0 0 0 3px rgba(0,230,255,0.08);
         }
         .form-row textarea { min-height:140px; resize:vertical; }
-        .form-row input::placeholder, .form-row textarea::placeholder { color:rgba(122,155,181,0.4); }
 
+        /* Footer */
         footer {
             position:relative; z-index:1; border-top:1px solid var(--border);
             padding:64px 0 32px; background:rgba(5,11,20,0.95);
@@ -433,6 +527,7 @@
             color: var(--muted); font-size:0.8rem; font-family: var(--mono); letter-spacing:1px;
         }
 
+        /* Utility */
         #scrollTop {
             position:fixed; bottom:28px; right:28px; z-index:50; width:44px; height:44px; background: var(--cyan);
             color: var(--bg); border:none; border-radius:3px; display:flex; align-items:center; justify-content:center;
@@ -444,7 +539,7 @@
 
         .toast {
             position:fixed; bottom:28px; left:28px; z-index:9000; background: var(--surface);
-            border:1px solid rgba(0,230,255,0.3); color: var(--white); padding:14px 24px; border-radius:3px;
+            border:1px solid rgba(0,230,255,0.3); color: var(--white); padding:14px 24px; border-radius:40px;
             font-size:0.88rem; box-shadow:0 8px 30px rgba(0,0,0,0.4); transform:translateY(20px); opacity:0;
             transition: transform 0.3s, opacity 0.3s;
         }
@@ -453,15 +548,35 @@
         .reveal { opacity:0; transform:translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .reveal.visible { opacity:1; transform:none; }
 
+        /* Responsive */
+        @media(max-width:1000px) {
+            .hero-img-frame, .hero-img-frame img { width: 300px; height: 300px; }
+        }
+        
         @media(max-width:900px) {
-            .hero-grid, .about-grid, .contact-grid { grid-template-columns:1fr; gap:48px; }
-            .hero-img-wrap { order:-1; }
-            .hero-img-frame, .hero-img-frame img { width:260px; height:260px; }
+            .hero-grid { 
+                grid-template-columns:1fr; 
+                gap: 40px;
+                text-align: center;
+            }
+            .hero-content {
+                order: 1;
+                align-items: center;
+            }
+            .hero-img-wrap { 
+                order: 0; 
+                margin-top: 20px;
+            }
+            .hero-badge { margin-left: auto; margin-right: auto; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-btns { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .about-grid, .contact-grid { grid-template-columns:1fr; gap:48px; }
             nav { display:none; }
             .menu-btn { display:block; }
             .foot-grid { grid-template-columns:1fr; }
-            .hero-stats { gap: 32px; }
         }
+        
         @media(max-width:560px) {
             .proj-grid { grid-template-columns:1fr; }
             .hero-stats { gap:24px; }
@@ -482,11 +597,11 @@
   <div class="nav-wrap">
     <div class="logo">AHMED<span class="dot">.</span>SALAH</div>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Stack</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#skills">STACK</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#contact">CONTACT</a>
     </nav>
     <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
   </div>
@@ -495,22 +610,26 @@
 <!-- Mobile Nav -->
 <div class="mob-nav" id="mobNav">
   <button class="mob-close" id="mobClose"><i class="fas fa-times"></i></button>
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#skills">Stack</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
+  <a href="#home">HOME</a>
+  <a href="#about">ABOUT</a>
+  <a href="#skills">STACK</a>
+  <a href="#projects">PROJECTS</a>
+  <a href="#contact">CONTACT</a>
 </div>
 <div class="overlay" id="overlay"></div>
 
-<!-- HERO - updated copy -->
+<!-- HERO - Fixed image positioning -->
 <section id="home">
   <div class="wrap">
     <div class="hero-grid">
-      <div>
-        <div class="hero-badge">Analytics Engineer · Modern Data Stack</div>
+      <!-- Left column - content (now properly ordered) -->
+      <div class="hero-content">
+        <div class="hero-badge">● ANALYTICS ENGINEER ● MODERN DATA STACK</div>
         <h1 class="hero-h1">
-          I bridge the gap between <span class="cyan">raw data</span> and <span class="outline">business decisions</span>
+          I bridge the gap<br>
+          between <span class="cyan">raw</span> data<br>
+          and <span class="outline">business</span><br>
+          decisions
         </h1>
         <p class="hero-desc">
           Using code, logic, and automation. I turn complex data landscapes into clean, tested, and reliable 'Single Source of Truth' models — combining the analytical power of SQL with the automation capabilities of Python.
@@ -519,7 +638,7 @@
           <a href="#projects" class="btn btn-cyan">See my work →</a>
           <button class="btn btn-ghost" id="dlCV">Download CV ↓</button>
         </div>
-        <!-- Hero stats - updated to match the image and 3+ years experience -->
+        <!-- Hero stats -->
         <div class="hero-stats">
           <div class="hero-stat">
             <strong>3+</strong>
@@ -539,6 +658,8 @@
           </div>
         </div>
       </div>
+      
+      <!-- Right column - image (now perfectly centered vertically) -->
       <div class="hero-img-wrap">
         <div class="hero-img-frame">
           <img src="https://i.postimg.cc/fy9s2prZ/create-a-professional-linkedin-profile-photo-use.png" alt="Ahmed Salah">
@@ -560,7 +681,7 @@
     </div>
 </div>
 
-<!-- ABOUT - matching your summary -->
+<!-- ABOUT -->
 <section id="about">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -588,7 +709,7 @@
   </div>
 </section>
 
-<!-- SKILLS (refined) -->
+<!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -605,7 +726,7 @@
   </div>
 </section>
 
-<!-- PROJECTS – Airline project spotlight (dbt, snowflake, airflow) -->
+<!-- PROJECTS -->
 <section id="projects">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -651,7 +772,7 @@
         </div>
     </div>
 
-    <!-- other projects (smaller) -->
+    <!-- other projects -->
     <div class="proj-grid">
         <div class="proj-card reveal">
             <div class="proj-thumb"><i class="fas fa-project-diagram proj-thumb-icon"></i><span class="proj-thumb-label">airflow · dbt · orchestration</span></div>
@@ -675,7 +796,7 @@
   </div>
 </section>
 
-<!-- CONTACT (unchanged but consistent) -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -709,19 +830,19 @@
   <div class="wrap">
     <div class="foot-grid">
       <div><div class="foot-logo">AHMED<span style="color:var(--cyan)">.</span>SALAH</div><p class="foot-desc">Analytics Engineer · Modern Data Stack · dbt, Snowflake, Airflow, Python</p><div class="socials"><a href="https://www.linkedin.com/in/ahmed-salah-74941b184/" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i></a><a href="https://github.com/Ahmedsalah554" target="_blank" class="social-btn"><i class="fab fa-github"></i></a><a href="mailto:salahabdelniem@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a></div></div>
-      <div class="foot-col"><h5>Explore</h5><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#skills">Stack</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div class="foot-col"><h5>Explore</h5><ul><li><a href="#home">HOME</a></li><li><a href="#about">ABOUT</a></li><li><a href="#skills">STACK</a></li><li><a href="#projects">PROJECTS</a></li><li><a href="#contact">CONTACT</a></li></ul></div>
       <div class="foot-col"><h5>Tech</h5><ul><li><a href="#">dbt</a></li><li><a href="#">Snowflake</a></li><li><a href="#">Airflow</a></li><li><a href="#">Python</a></li><li><a href="#">Docker</a></li></ul></div>
     </div>
     <div class="foot-bottom">© 2025 Ahmed Salah — turning data into decisions</div>
   </div>
 </footer>
 
-<!-- Scroll Top -->
+<!-- Scroll Top & Toast -->
 <button id="scrollTop"><i class="fas fa-arrow-up"></i></button>
 <div class="toast" id="toast"></div>
 
 <script>
-// canvas, loader, header, mobile nav, scroll, reveal, form, cv, toast (same as before)
+// Canvas background
 const canvas = document.getElementById('canvas-bg');
 const ctx = canvas.getContext('2d');
 let W, H, nodes=[];
