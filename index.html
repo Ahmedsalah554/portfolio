@@ -1038,5 +1038,176 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.logout = logout;
 </script>
+<!-- Project Management System -->
+<script>
+// Load and display projects dynamically
+let projectsData = [];
+
+// Default projects
+const defaultProjects = [
+    {
+        id: 1,
+        title: "✈️ Airline Analytics Pipeline",
+        type: "featured",
+        description: "Complete Modern Data Stack implementation: Amadeus API → Snowflake → dbt (8 models) → Airflow → Streamlit",
+        tech: ["dbt", "Snowflake", "Airflow", "Python", "Streamlit"],
+        github: "https://github.com/Ahmedsalah554/airline-analytics-dbt",
+        demo: "#",
+        image: "plane",
+        businessImpact: "100% elimination of manual reporting, real-time visibility for executive decision-making"
+    },
+    {
+        id: 2,
+        title: "Airflow + dbt pipeline",
+        type: "normal",
+        description: "Reusable DAG that dynamically runs dbt models, handles dependencies, and alerts on failures. Used in production for daily refreshes.",
+        tech: ["Airflow", "dbt", "Python"],
+        github: "https://github.com/Ahmedsalah554/airflow-dbt-pipeline",
+        demo: "#",
+        image: "project-diagram",
+        businessImpact: "90% reduction in workflow failures"
+    },
+    {
+        id: 3,
+        title: "Snowflake Cost Optimization Framework",
+        type: "normal",
+        description: "• Warehouse: Auto-suspend after 5min, scaling policies<br>• Queries: Clustering keys on 100M+ row tables<br>• Storage: Zero-copy cloning, time travel reduction",
+        tech: ["Snowflake", "dbt", "Optimization"],
+        github: "https://github.com/Ahmedsalah554/snowflake-optimizer",
+        demo: "#",
+        image: "snowflake",
+        businessImpact: "$7,560 annual savings, 65% faster queries",
+        costResult: "30% cost reduction ($2,100 → $1,470/month)"
+    }
+];
+
+function loadProjects() {
+    const stored = localStorage.getItem('portfolio_projects');
+    if (stored) {
+        projectsData = JSON.parse(stored);
+    } else {
+        projectsData = defaultProjects;
+        saveProjects();
+    }
+    renderProjects();
+}
+
+function saveProjects() {
+    localStorage.setItem('portfolio_projects', JSON.stringify(projectsData));
+}
+
+function renderProjects() {
+    const featuredContainer = document.getElementById('featured-project-container');
+    const projectsGrid = document.getElementById('projects-grid-container');
+    
+    if (!featuredContainer || !projectsGrid) return;
+    
+    featuredContainer.innerHTML = '';
+    projectsGrid.innerHTML = '';
+    
+    projectsData.forEach(project => {
+        if (project.type === 'featured') {
+            featuredContainer.appendChild(createFeaturedCard(project));
+        } else {
+            projectsGrid.appendChild(createNormalCard(project));
+        }
+    });
+}
+
+function createFeaturedCard(project) {
+    const card = document.createElement('div');
+    card.className = 'proj-card featured reveal';
+    card.style.marginBottom = '2rem';
+    card.innerHTML = `
+        <div class="proj-thumb">
+            <i class="fas fa-${project.image}" style="font-size: 4rem; opacity: 0.2;"></i>
+            <span class="proj-thumb-label-feat">⭐ Featured Project</span>
+        </div>
+        <div class="proj-body">
+            <div class="tags" style="margin-bottom:14px">
+                ${project.tech.map(t => `<span class="tag">${t}</span>`).join('')}
+            </div>
+            <h3 style="font-size:1.3rem;margin-bottom:10px;">${project.title}</h3>
+            <p style="color:var(--muted);font-size:0.95rem;line-height:1.7;">${project.description}</p>
+            <div class="proj-cta-row" style="margin-top: 20px;">
+                <a href="${project.github}" target="_blank" class="btn-proj-demo primary"><i class="fab fa-github"></i> View Code</a>
+                ${project.demo !== '#' ? `<a href="${project.demo}" target="_blank" class="btn-proj-demo secondary"><i class="fas fa-play-circle"></i> Live Demo</a>` : ''}
+            </div>
+            <div style="margin-top: 16px; border-left: 3px solid #00e6ff; padding-left: 12px;">
+                <p style="color: #f0f6ff; font-size: 0.9rem;">
+                    <strong>🎯 Business Impact:</strong> ${project.businessImpact}
+                </p>
+            </div>
+        </div>
+    `;
+    return card;
+}
+
+function createNormalCard(project) {
+    const card = document.createElement('div');
+    card.className = 'proj-card reveal';
+    card.innerHTML = `
+        <div class="proj-thumb">
+            <i class="fas fa-${project.image} proj-thumb-icon"></i>
+            <span class="proj-thumb-label">${project.tech.slice(0,3).join(' · ')}</span>
+        </div>
+        <div class="proj-body">
+            <div class="tags" style="margin-bottom:12px">
+                ${project.tech.map(t => `<span class="tag">${t}</span>`).join('')}
+            </div>
+            <h3>${project.title}</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.7;">${project.description}</p>
+            ${project.costResult ? `<p style="color: #00e6ff; font-size: 0.85rem; margin: 8px 0;"><strong>${project.costResult}</strong></p>` : ''}
+            <div class="proj-cta-row">
+                <a href="${project.github}" target="_blank" class="btn-proj-demo primary"><i class="fab fa-github"></i> Code</a>
+                ${project.demo !== '#' ? `<a href="${project.demo}" target="_blank" class="btn-proj-demo secondary">Demo</a>` : ''}
+            </div>
+            <div style="margin-top: 12px; border-left: 3px solid #00e6ff; padding-left: 12px;">
+                <p style="color: #f0f6ff; font-size: 0.85rem;">
+                    <strong>🎯 Business Impact:</strong> ${project.businessImpact}
+                </p>
+            </div>
+        </div>
+    `;
+    return card;
+}
+
+function addAdminButton() {
+    const isAdmin = sessionStorage.getItem('admin_logged_in') === 'true';
+    if (isAdmin) {
+        const adminBar = document.createElement('div');
+        adminBar.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: #00e6ff;
+            padding: 12px 24px;
+            border-radius: 40px;
+            display: flex;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        `;
+        adminBar.innerHTML = `
+            <a href="admin.html" style="color: #050b14; text-decoration: none; font-weight: bold;">📊 Admin Panel</a>
+            <button onclick="logout()" style="background: none; border: none; color: #050b14; cursor: pointer; font-weight: bold;">🚪 Logout</button>
+        `;
+        document.body.appendChild(adminBar);
+    }
+}
+
+function logout() {
+    sessionStorage.removeItem('admin_logged_in');
+    location.reload();
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    loadProjects();
+    addAdminButton();
+});
+
+window.logout = logout;
+</script>
 </body>
 </html>
