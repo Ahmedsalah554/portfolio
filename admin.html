@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Portfolio Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #050b14;
+            color: #f0f6ff;
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #00e6ff; margin-bottom: 30px; }
+        .login-box {
+            max-width: 400px;
+            margin: 100px auto;
+            background: #0a1628;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #050b14;
+            border: 1px solid #2a3a55;
+            color: white;
+            border-radius: 8px;
+        }
+        button {
+            background: #00e6ff;
+            color: #050b14;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px 5px;
+        }
+        .project-card {
+            background: #0a1628;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #2a3a55;
+        }
+        .form-section {
+            background: #0a1628;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        .delete-btn { background: #ff4444; color: white; }
+        .edit-btn { background: #ffa500; color: #050b14; }
+        .back-link { color: #00e6ff; text-decoration: none; display: inline-block; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <h1><i class="fas fa-cog"></i> Admin Dashboard</h1>
+    
+    <div id="loginSection"></div>
+    <div id="adminContent" style="display: none;"></div>
+</div>
+
+<script>
+const ADMIN_PASSWORD = 'admin123'; // Change this!
+
+let projects = [];
+
+function checkAuth() {
+    if (sessionStorage.getItem('admin_logged_in') === 'true') {
+        document.getElementById('loginSection').innerHTML = '';
+        document.getElementById('adminContent').style.display = 'block';
+        loadProjects();
+    } else {
+        document.getElementById('adminContent').style.display = 'none';
+        document.getElementById('loginSection').innerHTML = `
+            <div class="login-box">
+                <h2>Admin Login</h2>
+                <input type="password" id="password" placeholder="Enter password">
+                <button onclick="login()">Login</button>
+            </div>
+        `;
+    }
+}
+
+function login() {
+    const pass = document.getElementById('password').value;
+    if (pass === ADMIN_PASSWORD) {
+        sessionStorage.setItem('admin_logged_in', 'true');
+        checkAuth();
+    } else {
+        alert('Wrong password!');
+    }
+}
+
+function logout() {
+    sessionStorage.removeItem('admin_logged_in');
+    checkAuth();
+}
+
+function loadProjects() {
+    const stored = localStorage.getItem('portfolio_projects');
+    projects = stored ? JSON.parse(stored) : [];
+    renderAdmin();
+}
+
+function saveProjects() {
+    localStorage.setItem('portfolio_projects', JSON.stringify(projects));
+    renderAdmin();
+}
+
+function renderAdmin() {
+    document.getElementById('adminContent').innerHTML = `
+        <button onclick="logout()" style="background:#ff4444; color:white;">Logout</button>
+        
+        <div class="form-section">
+            <h3>➕ Add New Project</h3>
+            <form id="projectForm">
+                <input type="text" id="title" placeholder="Project Title" required>
+                <select id="type">
+                    <option value="normal">Normal Project</option>
+                    <option value="featured">Featured Project</option>
+                </select>
+                <textarea id="description" rows="3" placeholder="Description" required></textarea>
+                <input type="text" id="tech" placeholder="Technologies (comma separated)" required>
+                <input type="url" id="github" placeholder="GitHub URL">
+                <input type="url" id="demo" placeholder="Demo URL (optional)">
+                <input type="text" id="image" placeholder="Icon name (e.g., plane, snowflake)" value="code">
+                <textarea id="businessImpact" rows="2" placeholder="Business Impact" required></textarea>
+                <button type="submit">Add Project</button>
+            </form>
+        </div>
+        
+        <h3>📁 Your Projects (${projects.length})</h3>
+        <div id="projectsList"></div>
+    `;
+    
+    renderProjectsList();
+    
+    document.getElementById('projectForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        addProject();
+    });
+}
+
+function renderProjectsList() {
+    const container = document.getElementById('projectsList');
+    if (projects.length === 0) {
+        container.innerHTML = '<p>No projects yet. Add your first project!</p>';
+        return;
+    }
+    
+    container.innerHTML = projects.map(project => `
+        <div class="project-card">
+            <h3>${project.title}</h3>
+            <p><strong>Type:</strong> ${project.type}</p>
+            <p><strong>Tech:</strong> ${project.tech.join(', ')}</p>
+            <p><strong>Impact:</strong> ${project.businessImpact}</p>
+            <button class="edit-btn" onclick="editProject(${project.id})">✏️ Edit</button>
+            <button class="delete-btn" onclick="deleteProject(${project.id})">🗑️ Delete</button>
+        </div>
+    `).join('');
+}
+
+function addProject() {
+    const newProject = {
+        id: Date.now(),
+        title: document.getElementById('title').value,
+        type: document.getElementById('type').value,
+        description: document.getElementById('description').value,
+        tech: document.getElementById('tech').value.split(',').map(t => t.trim()),
+        github: document.getElementById('github').value,
+        demo: document.getElementById('demo').value || '#',
+        image: document.getElementById('image').value,
+        businessImpact: document.getElementById('businessImpact').value
+    };
+    
+    projects.push(newProject);
+    saveProjects();
+    document.getElementById('projectForm').reset();
+    alert('✅ Project added!');
+}
+
+function editProject(id) {
+    const project = projects.find(p => p.id === id);
+    if (!project) return;
+    
+    document.getElementById('title').value = project.title;
+    document.getElementById('type').value = project.type;
+    document.getElementById('description').value = project.description;
+    document.getElementById('tech').value = project.tech.join(', ');
+    document.getElementById('github').value = project.github;
+    document.getElementById('demo').value = project.demo;
+    document.getElementById('image').value = project.image;
+    document.getElementById('businessImpact').value = project.businessImpact;
+    
+    deleteProject(id, false);
+    alert('✏️ Edit the details and click Add Project to save changes.');
+}
+
+function deleteProject(id, confirmMsg = true) {
+    if (confirmMsg && !confirm('Delete this project?')) return;
+    projects = projects.filter(p => p.id !== id);
+    saveProjects();
+    if (confirmMsg) alert('🗑️ Project deleted!');
+}
+
+checkAuth();
+</script>
+</body>
+</html>
