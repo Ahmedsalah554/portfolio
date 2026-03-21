@@ -874,6 +874,8 @@ document.getElementById('dlCV').onclick=()=>{ showToast('CV download started! (d
 function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3000); }
 
 // ============== PROJECTS MANAGEMENT SYSTEM ==============
+console.log("✅ Project management system loaded");
+
 let projectsData = [];
 
 const defaultProjects = [
@@ -886,13 +888,13 @@ const defaultProjects = [
         github: "https://github.com/Ahmedsalah554/airline-analytics-dbt",
         demo: "#",
         image: "plane",
-        businessImpact: "100% elimination of manual reporting, real-time visibility for executive decision-making"
+        businessImpact: "100% elimination of manual reporting"
     },
     {
         id: 2,
         title: "Airflow + dbt pipeline",
         type: "normal",
-        description: "Reusable DAG that dynamically runs dbt models, handles dependencies, and alerts on failures. Used in production for daily refreshes.",
+        description: "Reusable DAG that dynamically runs dbt models, handles dependencies, and alerts on failures.",
         tech: ["Airflow", "dbt", "Python"],
         github: "https://github.com/Ahmedsalah554/airflow-dbt-pipeline",
         demo: "#",
@@ -903,47 +905,75 @@ const defaultProjects = [
         id: 3,
         title: "Snowflake Cost Optimization Framework",
         type: "normal",
-        description: "• Warehouse: Auto-suspend after 5min, scaling policies<br>• Queries: Clustering keys on 100M+ row tables<br>• Storage: Zero-copy cloning, time travel reduction",
+        description: "Warehouse optimization, clustering keys, and storage management for 100M+ row tables.",
         tech: ["Snowflake", "dbt", "Optimization"],
         github: "https://github.com/Ahmedsalah554/snowflake-optimizer",
         demo: "#",
         image: "snowflake",
         businessImpact: "$7,560 annual savings, 65% faster queries",
-        costResult: "30% cost reduction ($2,100 → $1,470/month)"
+        costResult: "30% cost reduction"
     }
 ];
 
 function loadProjects() {
+    console.log("🔄 Loading projects...");
     const stored = localStorage.getItem('portfolio_projects');
-    if (stored) {
-        projectsData = JSON.parse(stored);
+    console.log("Stored data:", stored);
+    
+    if (stored && stored !== 'undefined') {
+        try {
+            projectsData = JSON.parse(stored);
+            console.log("✅ Loaded from localStorage:", projectsData.length, "projects");
+        } catch(e) {
+            console.error("Error parsing stored data:", e);
+            projectsData = defaultProjects;
+            saveProjects();
+        }
     } else {
+        console.log("📦 No stored data, using defaults");
         projectsData = defaultProjects;
         saveProjects();
     }
+    
     renderProjects();
 }
 
 function saveProjects() {
     localStorage.setItem('portfolio_projects', JSON.stringify(projectsData));
+    console.log("💾 Saved", projectsData.length, "projects to localStorage");
 }
 
 function renderProjects() {
+    console.log("🎨 Rendering projects...");
     const featuredContainer = document.getElementById('featured-project-container');
     const projectsGrid = document.getElementById('projects-grid-container');
     
-    if (!featuredContainer || !projectsGrid) return;
+    console.log("Featured container:", featuredContainer);
+    console.log("Projects grid:", projectsGrid);
+    
+    if (!featuredContainer || !projectsGrid) {
+        console.error("❌ Containers not found!");
+        return;
+    }
     
     featuredContainer.innerHTML = '';
     projectsGrid.innerHTML = '';
     
+    let featuredCount = 0;
+    let normalCount = 0;
+    
     projectsData.forEach(project => {
+        console.log("Rendering project:", project.title, "type:", project.type);
         if (project.type === 'featured') {
             featuredContainer.appendChild(createFeaturedCard(project));
+            featuredCount++;
         } else {
             projectsGrid.appendChild(createNormalCard(project));
+            normalCount++;
         }
     });
+    
+    console.log(`✅ Rendered ${featuredCount} featured and ${normalCount} normal projects`);
 }
 
 function createFeaturedCard(project) {
@@ -1035,6 +1065,7 @@ function logout() {
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("🚀 DOM loaded, initializing...");
     loadProjects();
     addAdminButton();
 });
